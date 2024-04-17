@@ -1,7 +1,7 @@
 // ❗ IMPORTANT
 // The ✨ tasks found inside this component are not in order.
 // Check the README for the appropriate sequence to follow.
-import e from 'express'
+
 import React, { useState, useEffect } from 'react'
 
 let id = 0
@@ -40,13 +40,12 @@ export default function App() {
     // On the other hand, if the `editing` state changes back to null
     // then we need to reset the form back to empty values
     if (editing !== null) {
-      const memberToEdit = members.find(mem => mem.id === editing)
-      setValues(memberToEdit)
+      const memberToEdit = members.find(mem => mem.id === editing); // Find the member being edited
+      setValues(memberToEdit); // Set form values to those of the member being edited
     } else {
-      setValues(initialFormValues)
+      setValues(initialFormValues); // Reset form values if not editing
     }
-
-  }, [editing])
+  }, [editing, members]);
 
   const onChange = evt => {
     // ✨ This is the change handler for your text inputs and your textarea.
@@ -54,8 +53,8 @@ export default function App() {
     // and then you can use `evt.target.value` to update the state of the form
     const { id, value } = evt.target
     setValues({...values,[id]: value})
-    
   }
+  
   const edit = id => {
     // ✨ Put this function inside a click handler for the <button>Edit</button>.
     // It should change the value of `editing` state to be the id of the member
